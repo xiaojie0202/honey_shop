@@ -43,3 +43,9 @@ DATABASES = {
 
 
 
+## 项目截图
+![](https://github.com/xiaojie0202/honey_shop/blob/master/static/media/%E6%88%AA%E5%9B%BE1.png)
+![](https://github.com/xiaojie0202/honey_shop/blob/master/static/media/%E6%88%AA%E5%9B%BE2.png)
+![](https://github.com/xiaojie0202/honey_shop/blob/master/static/media/%E6%88%AA%E5%9B%BE3.png)
+![](https://github.com/xiaojie0202/honey_shop/blob/master/static/media/%E6%88%AA%E5%9B%BE4.png)
+![](https://github.com/xiaojie0202/honey_shop/blob/master/static/media/%E6%88%AA%E5%9B%BE5.png)
