@@ -1,0 +1,217 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}主页{% endblock title %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/revolution/css/settings.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/revolution/css/layers.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/revolution/css/navigation.css"/>
+{% endblock style %}
+
+{% block body_style %}
+    class="animsition animsition"
+{% endblock body_style %}
+
+{% block body %}
+    <div class="home-1" id="page">
+
+        <header class="header-style-1">
+            <div class="container">
+                <div class="row">
+                    <div class="header-1-inner">
+                        <a class="brand-logo animsition-link" href="index.html">
+                            <img class="img-responsive" src="/static/images/logo2.png" alt=""/>
+                        </a>
+                        <nav>
+                            <ul class="menu hidden-xs">
+                                <li><a href="/">主页</a></li>
+                                <li><a href="/shop">商城</a></li>
+                                <li><a href="/cart">购物车</a></li>
+                            </ul>
+                        </nav>
+                        <aside class="right">
+                            <div class="widget widget-control-header">
+                                {% if request.user.is_authenticated %}
+                                    <span><a href="/user_center_info">{{ request.user.first_name }}</a></span>
+                                {% else %}
+                                    <span>登陆</span>
+                                {% endif %}
+                            </div>
+                            <div class="widget widget-control-header widget-search-header">
+                                <a class="control btn-open-search-form js-open-search-form-header" href="#">
+                                    <span class="lnr lnr-magnifier"></span>
+                                </a>
+                                <div class="form-outer">
+                                    <button class="btn-close-form-search-header js-close-search-form-header">
+                                        <span class="lnr lnr-cross"></span>
+                                    </button>
+                                    <form action="/shop" method="get">
+                                        <input placeholder="Search" name="search"/>
+                                        <button class="search" type="submit">
+                                            <span class="lnr lnr-magnifier"></span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="widget widget-control-header widget-shop-cart js-widget-shop-cart">
+                                <a class="control" href="/cart">
+                                    <p class="counter">0</p>
+                                    <span class="lnr lnr-cart"></span>
+                                </a>
+                            </div>
+                            <div class="widget widget-control-header hidden-lg hidden-md hidden-sm">
+                                <a class="navbar-toggle js-offcanvas-has-events" type="button" href="#menu">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </a>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="banner banner-image-fit-screen">
+            <div class="rev_slider slider-home-1" id="slider_1">
+                <ul>
+                    <li>
+                        <img class="rev-slidebg" src="/static/images/slider/2.png" alt="demo"
+                             data-bgposition="center center"
+                             data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <section class="boxed-sm">
+            <div class="container">
+                <div class="row">
+                    <div class="product-category-grid-style-1">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="#">
+                                    <figure class="product-category-item">
+                                        <div class="thumbnail">
+                                            <img src="/static/images/category-product/m.png" alt=""/>
+                                        </div>
+                                        <figcaption>
+                                            <h3>纯天然</h3>
+                                        </figcaption>
+                                    </figure>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a href="#">
+                                    <figure class="product-category-item">
+                                        <div class="thumbnail">
+                                            <img src="/static/images/category-product/m.png" alt=""/>
+                                        </div>
+                                        <figcaption>
+                                            <h3>无公害</h3>
+                                        </figcaption>
+                                    </figure>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <a href="#">
+                                    <figure class="product-category-item">
+                                        <div class="thumbnail">
+                                            <img src="/static/images/category-product/m.png" alt=""/>
+                                        </div>
+                                        <figcaption>
+                                            <h3>爱蜜蜂</h3>
+                                        </figcaption>
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            <h2>蜂蜜的鉴别</h2>
+                            &nbsp;&nbsp;1.嗅、闻：蜂蜜的气味。开瓶后，新鲜蜂蜜有明显的花香，陈蜜香味较淡。加香精制成的假蜜气味令人不适。单花蜜具有其蜜源本身的香味。
+                            <br>
+                            <br>
+                            &nbsp;&nbsp;2.尝：品尝蜂蜜的口味。纯正的蜂蜜不但香气宜人，而且口尝会感到香味浓郁。将蜂蜜置于舌上，以舌抵上鄂，蜂蜜缓缓入喉，会感到微甜而稍有酸味，口感细腻，喉感略有麻辣，余味悠长。掺假后的蜂蜜，上述感觉变淡，而且有糖水味、较浓的酸味或咸味等。
+                            <br>
+                            <br>
+                            &nbsp;&nbsp;3.挑：检查蜂蜜的含水量。我国惯常取未成熟蜜，因此蜂蜜含水量高。市场上出售的蜂蜜大多经过加工、浓缩，含水量相对较低。经筷子或手指挑起蜂蜜，蜂蜜能拉丝者为佳无拉丝现象说明含水量高。也可滴一滴蜂蜜在草纸上，水迹易扩散者，说明含水高。纯净蜂蜜呈珠球状，不扩散。
+                            <br>
+                            <br>
+                            &nbsp;&nbsp;4.捻：观察和感觉结晶情况。夏天气温高，蜂蜜不易结晶；冬季气温低，蜂蜜容易结晶。有些蜂蜜本身易结晶有些则不宜结晶。有些人对蜂蜜结晶有误解，认为一结晶就是假蜂蜜或掺假的，这是不正确的。蜂蜜结晶呈鱼籽或油脂状，细腻，色白，手捻无砂粒感，结晶物入口易化。掺糖蜂蜜结晶呈粒状、手捻有砂粒感觉，不易捻碎，入口有吃糖的感觉。
+                            <br>
+                            <br>
+                            &nbsp;&nbsp;5.溶：将蜂蜜溶解在水里，搅拌均匀，静置，若蜂蜜中有杂质则会上浮或下沉。蜂蜜是一种天然产品，少量杂质并不影响蜂蜜本身的质量。
+                            <br>
+                            <br>
+                            &nbsp;&nbsp;6.看：看蜂蜜的色泽。纯正的蜂蜜光泽透明，仅有少量花粉渣沫悬浮其中，而无其它过大的杂质．蜂蜜的色泽因蜜源，植物的不同，颜色深浅有所不同，但同一瓶中的蜂蜜应色泽均一。
+                            <br>
+                            <br>
+                            &nbsp;&nbsp;7.倒：由于含水量较低，优质蜂蜜很黏稠。假如把密封好的瓶子倒转过来，封在瓶口的空气上浮起来明显比较“费力”。
+                            <br>
+                            <br>
+                            &nbsp;&nbsp;8.摩：如果购买乳白色或淡黄色的“结晶蜜”，只要挑出来放在手背上轻轻摩擦片刻，那些比食用精盐略细的颗粒就会溶解。这样的方法还可以用来“检验”蜂王浆。
+                            <br>
+                            <br>
+                            <h3>气味鉴别</h3>
+                            &nbsp;&nbsp;进行蜂蜜气味的感官鉴别时，可在室温下打开包装嗅其气味。必要时可取样品于水浴中加热5分钟，然后再嗅其气味。
+                            良质蜂蜜——具有纯正的清香味和各种本类蜜源植物花香味。无任何其他异味。
+                            次质蜂蜜——香气淡薄。
+                            劣质蜂蜜——香气很薄或无香气，有发醇味，酒味及其他不良气味。
+                            加糖鉴别
+                            假蜂蜜是用蔗糖（白糖或红糖）加碱水熬制而成，其中没有蜜的成分，或是蜜的成分很少。其品质特点是，没有自然的蜂蜜花香气味，而有一股熬糖浆的气味，品尝时无润口感，有白糖水的滋味。
+                            为了进一步确认假蜂蜜，可用一根烧红的粗铁丝，插入蜂蜜内，冒气的是真货，冒烟的是假货。也可采用荧光检查。取可疑蜂蜜1份与2.5份水混合均匀，向不透光的载玻片上涂2～3毫米厚层，或放在不透荧光的试管中，在暗室中进行荧光观察。一般在天然蜂蜜中，颜色呈黄色略带绿色的，是优质蜂蜜，如果色泽草绿、蓝绿，则是劣质蜂蜜，若色泽呈灰色的，则是用蔗糖调制成的假蜂蜜。
+                        </p>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="boxed-sm">
+        </section>
+    </div>
+{% endblock body %}
+
+{% block script %}
+    <script src="/static/js/library/jquery.min.js"></script>
+    <script src="/static/js/library/bootstrap.min.js"></script>
+    <script src="/static/js/function-check-viewport.js"></script>
+    <script src="/static/js/library/slick.min.js"></script>
+    <script src="/static/js/library/select2.full.min.js"></script>
+    <script src="/static/js/library/imagesloaded.pkgd.min.js"></script>
+    <script src="/static/js/library/jquery.mmenu.all.min.js"></script>
+    <script src="/static/js/library/rellax.min.js"></script>
+    {#    <script src="/static/js/library/isotope.pkgd.min.js"></script>#}
+    {#    <script src="/static/js/library/bootstrap-notify.min.js"></script>#}
+    {#    <script src="/static/js/library/bootstrap-slider.js"></script>#}
+    {#    <script src="/static/js/library/in-view.min.js"></script>#}
+    {#    <script src="/static/js/library/countUp.js"></script>#}
+    <script src="/static/js/library/animsition.min.js"></script>
+    {##}
+    <script src="/static/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script src="/static/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="/static/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script src="/static/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="/static/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="/static/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="/static/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script src="/static/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="/static/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="/static/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="/static/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script src="/static/js/global.js"></script>
+    <script src="/static/js/config-banner-home-1.js">
+
+
+    </script>
+    {##}
+{% endblock script %}
+

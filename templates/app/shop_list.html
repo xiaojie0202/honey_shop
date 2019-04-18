@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% load tags %}
+
+{% block title %}爱蜂蜜-商城{% endblock title %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="/static/css/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/css/main.css">
+{% endblock style %}
+{% block body %}
+    <div class="header_con">
+        <div class="header">
+            <div class="welcome fl">欢迎来到爱蜜蜂!</div>
+            <div class="fr">
+                {% if request.user.is_authenticated %}
+                    <div class="login_info fl">
+                        欢迎您：<em><a href="/user_center_info">{{ request.user.first_name }}</a></em>
+                    </div>
+                {% else %}
+                    <div class="login_btn fl">
+                        <a href="/login">登录</a>
+                    </div>
+                {% endif %}
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="search_bar clearfix">
+        <a href="/" class="logo fl"><img src="/static/images/logo2.png"></a>
+        <div class="search_con fl">
+            <form method="get">
+                <input type="text" class="input_text fl" name="search" placeholder="搜索商品"
+                       value="{{ request.GET.search }}">
+                <input type="submit" class="input_btn fr" value="搜索">
+            </form>
+        </div>
+        <div class="guest_cart fr">
+            <a href="/cart" class="cart_name fl">我的购物车</a>
+            <div class="goods_count fl">{{ request.user.shopcart_set.count }}</div>
+        </div>
+    </div>
+
+    <div class="navbar_con">
+        <div class="navbar clearfix">
+            <div class="subnav_con fl">
+                <h1>首页</h1>
+                <span></span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="#">爱蜂蜜</a>
+        <span>></span>
+        <a href="#">商城</a>
+    </div>
+
+    <div class="main_wrap clearfix">
+
+        <div class="r_wrap fr clearfix">
+            <div class="sort_bar">
+                <a>品种</a>
+
+                <a {% if not request.GET.variety %} class="active" {% endif %}
+                                                    href="?variety{% filter_handel filter_dict 'variety' %}">
+                    不限
+                </a>
+
+                {% for v in variety %}
+                    <a href="?variety={{ v }}{% filter_handel filter_dict 'variety' %}"
+                            {% if request.GET.variety == v %}
+                       class="active" {% endif %} >{{ v }}</a>
+                {% endfor %}
+            </div>
+
+            <div class="sort_bar">
+                <a>季节</a>
+                <a {% if not request.GET.manufacturing_season %} class="active" {% endif %}
+                                                                 href="?manufacturing_season{% filter_handel filter_dict 'manufacturing_season' %}">不限</a>
+                {% for v in manufacturing_season %}
+                    <a href="?manufacturing_season={{ v }}{% filter_handel filter_dict 'manufacturing_season' %}"
+                       {% if request.GET.manufacturing_season == v %}class="active" {% endif %}>
+                        {{ v }}
+                    </a>
+                {% endfor %}
+
+            </div>
+            <div class="sort_bar">
+                <a>地区</a>
+                <a {% if not request.GET.address %} class="active" {% endif %} href="?address{% filter_handel filter_dict 'address' %}">不限</a>
+                {% for v in address %}
+                    <a href="?address={{ v }}{% filter_handel filter_dict 'address' %}" {% if request.GET.address == v %} class="active" {% endif %} >{{ v }}</a>
+                {% endfor %}
+            </div>
+
+            <ul class="goods_type_list clearfix">
+                {% for good in goods_obj %}
+                    <li>
+                        <a href="/detail/{{ good.id }}"><img src="/static/media/{{ good.image }}"></a>
+                        <h4><a href="/detail/{{ good.id }}">{{ good.name }}</a></h4>
+                        <div class="operate">
+                            <span class="prize">￥{{ good.price }}</span>
+                            <span class="unit">{{ good.price }}/{{ good.unite }}</span>
+                            <a href="#" class="add_goods" title="加入购物车"></a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="pagenation">
+                {% if goods_obj.paginator.num_pages > 1 %}
+                    {% if goods_obj.has_previous %}
+                        <a href="?page={{ goods_obj.previous_page_number }}{% filter_handel filter_dict 'a' %}">
+                            上一页
+                        </a>
+                    {% else %}
+                        <a>
+                            上一页
+                        </a>
+                    {% endif %}
+
+                    {% for i in goods_obj.paginator.pager_num_range %}
+                        {% if i == goods_obj.number %}
+                            <a href="?page={{ i }}{% filter_handel filter_dict 'a' %}" class="active">{{ i }}</a>
+                        {% else %}
+                            <a href="?page={{ i }}{% filter_handel filter_dict 'a' %}">{{ i }}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if goods_obj.has_next %}
+
+                        <a href="?page={{ goods_obj.next_page_number }}{% filter_handel filter_dict 'a' %}">下一页></a>
+
+                    {% else %}
+                        <a>下一页></a>
+                    {% endif %}
+
+                {% endif %}
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <div class="foot_link">
+            <a href="#">关于我们</a>
+            <span>|</span>
+            <a href="#">联系我们</a>
+            <span>|</span>
+            <a href="#">招聘人才</a>
+            <span>|</span>
+            <a href="#">友情链接</a>
+        </div>
+        <p>CopyRight © 2016 爱蜂蜜 All Rights Reserved</p>
+        <p>电话：010-****888 京ICP备*******8号</p>
+    </div>
+{% endblock body %}

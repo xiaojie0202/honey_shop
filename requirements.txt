@@ -1,0 +1,4 @@
+Django==2.1.5
+PyMySQL==0.9.3
+DjangoUeditor==1.8.143
+
